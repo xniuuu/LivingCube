@@ -1,0 +1,38 @@
+qb.v1.position = glm::vec4(qb.path_point.x + scaling + perp.x                  , qb.path_point.y + 1.0 + perp.y                  , qb.path_point.z - 1.0+(2.0*i/3.0), 1.0);
+qb.v2.position = glm::vec4(qb.path_point.x + scaling + perp.x*(1.0 - 2.0*i/3.0), qb.path_point.y + 1.0 + perp.y*(1.0 - 2.0*i/3.0), qb.path_point.z + 1.0            , 1.0);
+qb.v3.position = glm::vec4(qb.path_point.x + scaling - perp.x                  , qb.path_point.y + 1.0 - perp.y                  , qb.path_point.z + 1.0-(2.0*i/3.0), 1.0);
+qb.v4.position = glm::vec4(qb.path_point.x + scaling - perp.x*(1.0 - 2.0*i/3.0), qb.path_point.y + 1.0 - perp.y*(1.0 - 2.0*i/3.0), qb.path_point.z - 1.0            , 1.0);
+
+qb.v5.position = glm::vec4(qb.path_point.x - 1.0            , qb.path_point.y - 1.0, qb.path_point.z - 1.0+(2.0*i/3.0), 1.0);
+qb.v6.position = glm::vec4(qb.path_point.x - 1.0+(2.0*i/3.0), qb.path_point.y - 1.0, qb.path_point.z + 1.0            , 1.0);
+qb.v7.position = glm::vec4(qb.path_point.x + 1.0            , qb.path_point.y - 1.0, qb.path_point.z + 1.0-(2.0*i/3.0), 1.0);
+qb.v8.position = glm::vec4(qb.path_point.x + 1.0-(2.0*i/3.0), qb.path_point.y - 1.0, qb.path_point.z - 1.0            , 1.0);
+
+if(i == 0){
+  qb.v9.position  = glm::vec4(qb.path_point.x + scaling - perp.x, qb.path_point.y + 1.0 - perp.y, qb.path_point.z - 1.0, 1.0);
+  qb.v10.position = glm::vec4(qb.path_point.x + scaling - perp.x, qb.path_point.y + 1.0 - perp.y, qb.path_point.z + 1.0, 1.0);
+  qb.v11.position = glm::vec4(qb.path_point.x + scaling + perp.x, qb.path_point.y + 1.0 + perp.y, qb.path_point.z + 1.0, 1.0);
+  qb.v12.position = glm::vec4(qb.path_point.x + scaling + perp.x, qb.path_point.y + 1.0 + perp.y, qb.path_point.z - 1.0, 1.0);
+} else{
+  double bend_x = ((i == 1 || i == 2)) ?  modify_x : 0.0;
+  //std::cout << dx<< std::endl;
+  qb.v9.position  = glm::vec4(qb.path_point.x - 1.0 - bend_x, qb.path_point.y + 1.0 - 2.0*i/3.0, qb.path_point.z - 1.0 - bend_x, 1.0);
+  qb.v10.position = glm::vec4(qb.path_point.x - 1.0 - bend_x, qb.path_point.y + 1.0 - 2.0*i/3.0, qb.path_point.z + 1.0 + bend_x, 1.0);
+  qb.v11.position = glm::vec4(qb.path_point.x + 1.0 + bend_x, qb.path_point.y + 1.0 - 2.0*i/3.0, qb.path_point.z + 1.0 + bend_x, 1.0);
+  qb.v12.position = glm::vec4(qb.path_point.x + 1.0 + bend_x, qb.path_point.y + 1.0 - 2.0*i/3.0, qb.path_point.z - 1.0 - bend_x, 1.0);
+}
+
+qb.pos_l1[i]  = qb.v1.position;
+qb.pos_l2[i]  = qb.v2.position;
+qb.pos_l3[i]  = qb.v3.position;
+qb.pos_l4[i]  = qb.v4.position;
+
+qb.pos_l5[i]  = qb.v5.position;
+qb.pos_l6[i]  = qb.v6.position;
+qb.pos_l7[i]  = qb.v7.position;
+qb.pos_l8[i]  = qb.v8.position;
+
+qb.pos_l9[i]  = qb.v9.position;
+qb.pos_l10[i] = qb.v10.position;
+qb.pos_l11[i] = qb.v11.position;
+qb.pos_l12[i] = qb.v12.position;

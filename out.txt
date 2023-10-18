@@ -1,0 +1,2 @@
+g++ test_cube.cpp -o test.o -fsanitize=address -lGL -lGLU -lglut
+g++ SplineCubeMain.cpp -o spline.o -fsanitize=address -lGL -lGLU -lglut
